@@ -3,7 +3,11 @@
   
   <nav-bar router.bind="router"></nav-bar>
 
-  <div class="page-host">
+  <div class="page-host ui main container">
     <router-view></router-view>
+  </div>
+
+  <div class="ui ${router.isNavigating ? 'active' : ''} inverted dimmer">
+    <div class="ui loader"></div>
   </div>
 </template>

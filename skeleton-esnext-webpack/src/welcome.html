@@ -1,20 +1,25 @@
 <template>
-  <section class="au-animate">
-    <h2>${heading}</h2>
-    <form role="form" submit.delegate="submit()">
-      <div class="form-group">
-        <label for="fn">First Name</label>
-        <input type="text" value.bind="firstName" class="form-control" id="fn" placeholder="first name">
+  <section>
+    <h2 class="ui header">${heading}</h2>
+    <form role="form" submit.delegate="submit()" class="ui form success">
+      <div class="field">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" placeholder="First Name" value.bind="firstName">
+          </div>
+          <div class="field">
+            <input type="text" placeholder="Last Name" value.bind="lastName">
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="ln">Last Name</label>
-        <input type="text" value.bind="lastName" class="form-control" id="ln" placeholder="last name">
+
+      <div class="ui success message">
+        <div class="header">Full Name</div>
+        <p>${fullName | upper}</p>
       </div>
-      <div class="form-group">
-        <label>Full Name</label>
-        <p class="help-block">${fullName | upper}</p>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      
+      <button type="submit" class="ui primary button">Submit</button>
     </form>
   </section>
 </template>
