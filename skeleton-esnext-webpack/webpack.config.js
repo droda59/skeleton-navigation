@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || 'devel
 let config;
 
 // basic configuration:
-const title = 'Aurelia Navigation Skeleton';
+const title = 'Aurelia Hands-on lab';
 const baseUrl = '/';
 const rootDir = path.resolve();
 const srcDir = path.resolve('src');
@@ -99,32 +99,6 @@ switch (ENV) {
 
       require('@easy-webpack/config-uglify')
         ({debug: false})
-    );
-    break;
-  
-  case 'test':
-    config = generateConfig(
-      baseConfig,
-
-      require('@easy-webpack/config-env-development')
-        ({devtool: 'inline-source-map'}),
-
-      require('@easy-webpack/config-aurelia')
-        ({root: rootDir, src: srcDir, title: title, baseUrl: baseUrl}),
-
-      require('@easy-webpack/config-babel')(),
-      require('@easy-webpack/config-html')(),
-
-      require('@easy-webpack/config-css')
-        ({ filename: 'styles.css', allChunks: true, sourceMap: false }),
-
-      require('@easy-webpack/config-fonts-and-images')(),
-      require('@easy-webpack/config-global-bluebird')(),
-      require('@easy-webpack/config-global-jquery')(),
-      require('@easy-webpack/config-global-regenerator')(),
-      require('@easy-webpack/config-generate-index-html')(),
-
-      require('@easy-webpack/config-test-coverage-istanbul')()
     );
     break;
   
