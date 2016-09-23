@@ -1,7 +1,7 @@
 // we want font-awesome to load as soon as possible to show the fa-spinner
 import '../styles/styles.css';
-import '../semantic/dist/semantic.css';
-import '../semantic/dist/semantic.js';
+import '../semantic/dist/semantic.min.css';
+import '../semantic/dist/semantic.min.js';
 
 // comment out if you don't want a Promise polyfill (remove also from webpack.common.js)
 import * as Bluebird from 'bluebird';
