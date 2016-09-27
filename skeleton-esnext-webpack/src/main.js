@@ -10,7 +10,8 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging();
+    .developmentLogging()
+    .plugin("aurelia-validation");
 
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin('aurelia-animator-css');
@@ -28,4 +29,24 @@ export async function configure(aurelia) {
   const offline = await System.import('offline-plugin/runtime');
   offline.install();
   */
+
+    String.prototype.removeNonDigits = function() {
+        let digits = "";
+
+        for (let i = 0; i < this.length; i++) {
+            let char = this.charAt(i);
+
+            if ("0" <= char && char <= "9")
+                digits += char;
+        }
+
+        return digits;
+    }
+    
+    Array.prototype.removeItem = function(item) {
+        var i = this.indexOf(item);
+        if(i != -1) {
+            this.splice(i, 1);
+        }
+    }
 }
