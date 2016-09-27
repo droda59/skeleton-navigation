@@ -1,0 +1,15 @@
+<template>
+    <require from="../../phone-value-converter"></require>
+
+    <div class="inline fields">
+        <a click.trigger="deletePhoneNumber()">
+            <i class="trash icon"></i>
+        </a>
+        <div class="field four columns wide">
+            <input type="text" placeholder="Type" value.bind="phone.type">
+        </div>
+        <div class="field">
+            <input type="tel" placeholder="Number" value.bind="phone.number | phone">
+        </div>
+    </div>
+</template>

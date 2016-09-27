@@ -1,6 +1,6 @@
 <template>
-    <require from="../phone-value-converter"></require>
     <require from="../uppercase-value-converter"></require>
+    <require from="./components/phone-input"></require>
 
     <section>
         <h2 class="ui centered aligned icon header">
@@ -44,17 +44,7 @@
                     <h4 class="ui dividing header">Phone numbers</h4>
                     <div class="ui list">
                         <div repeat.for="phone of user.phoneNumbers" class="item">
-                            <div class="inline fields">
-                                <a click.trigger="deletePhoneNumber(phone)">
-                                    <i class="trash icon"></i>
-                                </a>
-                                <div class="field four columns wide">
-                                    <input type="text" placeholder="Type" value.bind="phone.type">
-                                </div>
-                                <div class="field">
-                                    <input type="tel" placeholder="Number" value.bind="phone.number | phone">
-                                </div>
-                            </div>
+                            <phone-input phone.bind="phone" delete.call="deletePhoneNumber(phone)"></phone-input>
                         </div>
                         <div class="item">
                             <a click.trigger="addPhoneNumber()">
