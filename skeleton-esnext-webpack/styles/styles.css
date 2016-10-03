@@ -35,3 +35,38 @@ body {
 .ui.grid {
   height: initial;
 }
+
+.item.au-enter {
+    opacity: 0!important;
+}
+.item.au-enter-active {
+    -webkit-animation: fadeIn 2s;
+    animation: fadeIn 2s;
+}
+.item.au-leave-active {
+    -webkit-animation: fadeOut 1s;
+    animation: fadeOut 1s;
+}
+
+.list.au-stagger {
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms;
+}
+
+@-webkit-keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes fadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
