@@ -4,7 +4,7 @@
   <nav-bar router.bind="router"></nav-bar>
 
   <div class="page-host ui main container">
-    <router-view></router-view>
+    <router-view swap-order="after"></router-view>
   </div>
 
   <div class="ui ${router.isNavigating ? 'active' : ''} inverted dimmer">

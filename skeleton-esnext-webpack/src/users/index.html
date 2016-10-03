@@ -1,4 +1,6 @@
 <template>
+    <require from="../shared/confirmation-modal.html"></require>
+
     <section>
         <h2 class="ui centered aligned icon header">
             <i class="users icon"></i>
@@ -8,11 +10,11 @@
         </h2>
         <div class="ui centered grid">
             <div class="eight wide column">
-                <div class="ui middle aligned divided list">
-                    <div repeat.for="user of users" class="item">
+                <div class="ui middle aligned divided list au-stagger">
+                    <div repeat.for="user of users" class="item au-animate">
                         <div class="right floated content">
-                            <div class="ui button" click.trigger="editUser(user._id)">Edit</div>
-                            <div class="ui red button" click.trigger="deleteUser(user._id)">Delete</div>
+                            <div class="ui button" click.trigger="editUser(user)">Edit</div>
+                            <div class="ui red button" click.trigger="deleteUser(user)">Delete</div>
                         </div>
                         <div class="content">
                             ${ user.firstName } ${ user.lastName }
@@ -27,16 +29,6 @@
             </div>
         </div>
 
-        <div class="ui small modal">
-            <div class="header">Delete user</div>
-            <div class="content">Are you sure you want to delete?</div>
-            <div class="actions">
-                <div class="ui negative cancel button">No</div>
-                <div class="ui positive approve right labeled icon button">
-                    <i class="checkmark icon"></i>
-                    Yes
-                </div>
-            </div>
-        </div>
+        <confirmation-modal header="Delete user" message="Are you sure you want to delete?"></confirmation-modal>
     </section>
 </template>

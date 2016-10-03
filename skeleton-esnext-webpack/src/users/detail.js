@@ -56,17 +56,10 @@ export class User {
         this.errors = await this.controller.validate();
         if (!this.errors.length) {
             try {
-                if (this.id) {
-                    await this.http.fetch("api/employees/" + this.id, {
-                        method: "PUT",
-                        body: json(this.user)
-                    });
-                } else {
-                    await this.http.fetch("api/employees", {
-                        method: "POST",
-                        body: json(this.user)
-                    });
-                }
+                await this.http.fetch("api/employees/" + this.id, {
+                    method: this.id ? "PUT" : "POST",
+                    body: json(this.user)
+                });
 
                 this.router.navigateToRoute("users")
             } catch (e) {

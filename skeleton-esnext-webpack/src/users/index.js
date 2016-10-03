@@ -1,14 +1,16 @@
 import {HttpClient} from "aurelia-fetch-client";
 import {inject, Lazy} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import {ConfirmationModalController} from "confirmation-modal-controller";
 
-@inject(Lazy.of(HttpClient), Router)
+@inject(Lazy.of(HttpClient), Router, ConfirmationModalController)
 export class Users {
     users = [];
 
-    constructor(getHttpClient, router) {
+    constructor(getHttpClient, router, modalController) {
         this.getHttpClient = getHttpClient;
         this.router = router;
+        this.modalController = modalController;
     }
 
     async activate() {
@@ -22,35 +24,26 @@ export class Users {
                 .withBaseUrl("http://handsonapi.azurewebsites.net/");
         });
 
-        await this._getUsers();
+        let response = await this.http.fetch("api/employees");
+        this.users = await response.json();
     }
 
-    deleteUser(id) {
-        let that = this;
+    deleteUser(user) {
+        this.modalController.openModal(async () =>
+        { 
+            await this.http.fetch("api/employees/" + user._id, {
+                method: "delete"
+            });
 
-        $(".ui.modal").modal({
-            onApprove: async () =>
-            { 
-                await that.http.fetch("api/employees/" + id, {
-                    method: "delete"
-                });
-                
-                await that._getUsers();
-            }
-        })
-        .modal("show");
+            this.users.removeItem(user);
+        });
     }
 
     addUser() {
         this.router.navigateToRoute("newUser");
     }
 
-    editUser(id) {
-        this.router.navigateToRoute("user", { id: id });
-    }
-
-    async _getUsers() {
-        let response = await this.http.fetch("api/employees");
-        this.users = await response.json();
+    editUser(user) {
+        this.router.navigateToRoute("user", {id: user._id});
     }
 }
