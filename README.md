@@ -1,8 +1,6 @@
 ![alt tag](http://aurelia.io/images/main-logo.svg)
 #Hands-on Aurelia
 
----
-
 ## Assurez-vous que tout cela soit fait avant le Hands-on svp! 
 ## Vous aurez besoin de ce qui suit: 
 
