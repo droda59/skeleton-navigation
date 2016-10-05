@@ -1,4 +1,5 @@
-# Hands-on Aurelia
+![alt tag](http://aurelia.io/images/main-logo.svg)
+#Hands-on Aurelia
 
 ---
 
