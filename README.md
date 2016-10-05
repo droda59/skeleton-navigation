@@ -5,6 +5,11 @@
 ## Assurez-vous que tout cela soit fait avant le Hands-on svp! 
 ## Vous aurez besoin de ce qui suit: 
 
+###Un laptop
+
+N'importe quelle plateforme!
+> Si vous n'en avez pas, svp m'en aviser et on vous en trouvera un. 
+
 ###[Un éditeur qui torche](https://code.visualstudio.com)
 
 Mais n'importe lequel fera l'affaire. 
