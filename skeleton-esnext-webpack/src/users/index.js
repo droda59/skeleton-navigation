@@ -16,13 +16,7 @@ export class Users {
     async activate() {
         await fetch;
 
-        const http = this.http = this.getHttpClient();
-
-        http.configure(config => {
-            config
-                .useStandardConfiguration()
-                .withBaseUrl("http://handsonapi.azurewebsites.net/");
-        });
+        this.http = this.getHttpClient();
 
         let response = await this.http.fetch("api/employees");
         this.users = await response.json();

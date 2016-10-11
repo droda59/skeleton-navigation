@@ -1,5 +1,6 @@
 <template>
-    <require from="../uppercase-value-converter"></require>
+    <require from="../shared/value-converters/uppercase-value-converter"></require>
+    <require from="../shared/components/error-summary.html"></require>
     <require from="./components/phone-input"></require>
 
     <section>
@@ -9,55 +10,44 @@
                 ${ fullName | uppercase & oneTime }
             </div>
         </h2>
-        <div class="ui centered grid">
-            <div class="eight wide column">
-                <form class="ui form ${errors.length ? 'error' : ''}" submit.delegate="save()" validation-errors.bind="errors">
-                    <div class="ui error message">
-                        <div class="header">We had some issues</div>
-                        <ul class="list">
-                            <li repeat.for="errorInfo of errors">
-                                ${errorInfo.error.message}
-                            </li>
-                        </ul>
+        <form class="ui form ${errors.length ? 'error' : ''}" submit.delegate="save()" validation-errors.bind="errors">
+            <error-summary errors.bind="errors"></error-summary>
+            
+            <h4 class="ui dividing header">General Information</h4>
+            <div class="field required">
+                <label>Name</label>
+                <div class="two fields">
+                    <div class="field">
+                        <input type="text" placeholder="First name" value.bind="user.firstName & validate">
                     </div>
-                    
-                    <h4 class="ui dividing header">General Information</h4>
-                    <div class="field required">
-                        <label>Name</label>
-                        <div class="two fields">
-                            <div class="field">
-                                <input type="text" placeholder="First name" value.bind="user.firstName & validate">
-                            </div>
-                            <div class="field">
-                                <input type="text" placeholder="Last name" value.bind="user.lastName & validate">
-                            </div>
-                        </div>
+                    <div class="field">
+                        <input type="text" placeholder="Last name" value.bind="user.lastName & validate">
                     </div>
-
-                    <h4 class="ui dividing header">Email</h4>
-                    <div class="inline fields">
-                        <div class="field sixteen columns wide">
-                            <input type="email" placeholder="Address" value.bind="user.email & validate">
-                        </div>
-                    </div>
-
-                    <h4 class="ui dividing header">Phone numbers</h4>
-                    <div class="ui list">
-                        <div repeat.for="phone of user.phoneNumbers" class="item">
-                            <phone-input phone.bind="phone" delete.call="deletePhoneNumber(phone)"></phone-input>
-                        </div>
-                        <div class="item">
-                            <a click.trigger="addPhoneNumber()">
-                                <i class="plus icon"></i>
-                                Add phone number
-                            </a>
-                        </div>
-                    </div>
-
-                    <button class="ui primary button" click.trigger="save()">Save</button>
-                    <div class="ui basic button" click.trigger="cancel()">Cancel</div>
-                </form>
+                </div>
             </div>
-        </div>
+
+            <h4 class="ui dividing header">Email</h4>
+            <div class="inline fields">
+                <div class="field sixteen columns wide">
+                    <input type="email" placeholder="Address" value.bind="user.email & validate">
+                </div>
+            </div>
+
+            <h4 class="ui dividing header">Phone numbers</h4>
+            <div class="ui list">
+                <div repeat.for="phone of user.phoneNumbers" class="item">
+                    <phone-input phone.bind="phone" delete.call="deletePhoneNumber(phone)"></phone-input>
+                </div>
+                <div class="item">
+                    <a click.trigger="addPhoneNumber()">
+                        <i class="plus icon"></i>
+                        Add phone number
+                    </a>
+                </div>
+            </div>
+
+            <button class="ui primary button" click.trigger="save()">Save</button>
+            <div class="ui basic button" click.trigger="cancel()">Cancel</div>
+        </form>
     </section>
 </template>

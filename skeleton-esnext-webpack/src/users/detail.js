@@ -20,18 +20,7 @@ export class User {
     async activate(params) {
         await fetch;
 
-        const http = this.http = this.getHttpClient();
-
-        http.configure(config => {
-            config
-                .withDefaults({
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                })
-                .rejectErrorResponses()
-                .withBaseUrl("http://handsonapi.azurewebsites.net/");
-        });
+        this.http = this.getHttpClient();
         
         if (params.id) {
             this.id = params.id;

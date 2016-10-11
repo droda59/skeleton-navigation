@@ -1,5 +1,5 @@
 <template>
-    <require from="../shared/confirmation-modal.html"></require>
+    <require from="../shared/components/confirmation-modal.html"></require>
 
     <section>
         <h2 class="ui centered aligned icon header">
@@ -8,24 +8,20 @@
                 Utilisateurs
             </div>
         </h2>
-        <div class="ui centered grid">
-            <div class="eight wide column">
-                <div class="ui middle aligned divided list au-stagger">
-                    <div repeat.for="user of users" class="item au-animate">
-                        <div class="right floated content">
-                            <div class="ui button" click.trigger="editUser(user)">Edit</div>
-                            <div class="ui red button" click.trigger="deleteUser(user)">Delete</div>
-                        </div>
-                        <div class="content">
-                            ${ user.firstName } ${ user.lastName }
-                        </div>
-                    </div>
-
-                    <div class="ui primary basic button" click.trigger="addUser()">
-                        <i class="plus icon"></i>
-                        Add user
-                    </div>
+        <div class="ui middle aligned divided list au-stagger">
+            <div repeat.for="user of users" class="item au-animate">
+                <div class="right floated content">
+                    <div class="ui button" click.trigger="editUser(user)">Edit</div>
+                    <div class="ui red button" click.trigger="deleteUser(user)">Delete</div>
                 </div>
+                <div class="content">
+                    ${ user.firstName } ${ user.lastName }
+                </div>
+            </div>
+
+            <div class="ui primary basic button" click.trigger="addUser()">
+                <i class="plus icon"></i>
+                Add user
             </div>
         </div>
 
