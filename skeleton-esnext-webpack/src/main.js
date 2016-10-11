@@ -2,6 +2,7 @@
 import '../styles/styles.css';
 import '../semantic/dist/semantic.min.css';
 import '../semantic/dist/semantic.min.js';
+import {HttpClient} from "aurelia-fetch-client";
 
 // comment out if you don't want a Promise polyfill (remove also from webpack.common.js)
 import * as Bluebird from 'bluebird';
