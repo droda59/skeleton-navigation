@@ -7,8 +7,8 @@
             <div class="content">
             </div>
         </h2>
-        <div class="ui centered grid">
-          <div class="eight wide column">
+        <!--<div class="ui centered grid">-->
+          <!--<div class="eight wide column">-->
                 <div class="ui ignored info message" if.bind="token">Token successfully created!</div>
                 
               <form class="ui form ${isWorking ? 'loading' : ''}" submit.delegate="send()" validation-errors.bind="errors">
@@ -32,7 +32,7 @@
                         Envoyer
                     </button>
               </form>
-          </div>
-        </div>
+          <!--</div>-->
+        <!--</div>-->
     </section>
 </template>

@@ -26,12 +26,20 @@ body {
 
 .ui.main.container {
     position: relative;
-    width: 80% !important;
+    /*width: 80% !important;*/
     left: 0px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    /*margin-left: auto !important;*/
+    /*margin-right: auto !important;*/
     height: calc(100% - 100px);
 }
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+  .ui.main.container {
+      width: 60%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+  }
+}
+
 .ui.grid {
   height: initial;
 }
