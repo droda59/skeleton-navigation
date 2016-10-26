@@ -22,7 +22,7 @@ setlocal enabledelayedexpansion
 
 SET ARTIFACTS=%~dp0%..\artifacts
 
-SET DEPLOYMENT_SOURCE=%~dp0%.\Source
+SET DEPLOYMENT_SOURCE=%~dp0%.\skeleton-esnext-webpack
 
 IF NOT DEFINED DEPLOYMENT_TARGET (
   SET DEPLOYMENT_TARGET=%ARTIFACTS%\wwwroot
@@ -100,16 +100,6 @@ IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
 
 echo Handling npm and gulp
 echo Deployment Source at "%DEPLOYMENT_SOURCE%"
-
-:: 5.A Install npm packages
-IF EXIST "%DEPLOYMENT_SOURCE%\package.json" (
-  echo Installing NPM modules
-  pushd "%DEPLOYMENT_SOURCE%"
-  call :ExecuteCmd !NPM_CMD! install --silent
-  call :ExecuteCmd !NPM_CMD! run build:prod
-  IF !ERRORLEVEL! NEQ 0 goto error
-  popd
-)
 
 echo Deploying files...
 xcopy %DEPLOYMENT_SOURCE%\dist %DEPLOYMENT_TARGET% /Y /s
