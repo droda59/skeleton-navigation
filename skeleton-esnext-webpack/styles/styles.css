@@ -35,6 +35,43 @@ body {
 .ui.grid {
   height: initial;
 }
+body .ui.button:not(.icon)>.icon:not(.button):not(.dropdown) {
+    margin: 0;
+}
+
+.ui.form .text.white {
+  color: #FFFFFF;
+}
+.ui.form .text.grey {
+  color: #CCCCCC;
+}
+.ui.form .text.black {
+  color: #1B1C1D;
+}
+.ui.form .text.yellow {
+  color: #F2C61F;
+}
+.ui.form .text.teal {
+  color: #00B5AD;
+}
+.ui.form .text.red {
+  color: #D95C5C;
+}
+.ui.form .text.purple {
+  color: #564F8A;
+}
+.ui.form .text.pink {
+  color: #D9499A;
+}
+.ui.form .text.orange {
+  color: #E07B53;
+}
+.ui.form .text.green {
+  color: #5BBD72;
+}
+.ui.form .text.blue {
+  color: #3B83C0;
+}
 
 .item.au-enter {
     opacity: 0!important;

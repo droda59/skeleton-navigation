@@ -75,9 +75,11 @@
     "aurelia-templating-binding": "^1.0.0",
     "aurelia-templating-resources": "^1.0.0",
     "aurelia-templating-router": "^1.0.0",
+    "aurelia-validation": "^0.13.1",
     "bluebird": "^3.4.1",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
+    "recorderjs": "github:mattdiamond/Recorderjs",
     "semantic-ui": "^2.2.4"
   },
   "devDependencies": {

@@ -11,22 +11,18 @@ Bluebird.config({ warnings: false });
 export async function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
-    .developmentLogging();
+    // .developmentLogging()
+    .plugin("aurelia-validation");
 
   // Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
   // aurelia.use.plugin('aurelia-html-import-template-loader')
 
     let httpService = new HttpClient();
     httpService.configure(config => {
-            config
-                .withDefaults({
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                })
-                .rejectErrorResponses()
-                .withBaseUrl("http://handsonapi.azurewebsites.net/");
-        });
+        config
+            .withDefaults()
+            .rejectErrorResponses();
+    });
 
     aurelia.container.registerInstance(HttpClient, httpService);
 

@@ -1,65 +1,37 @@
 <template>
+    <require from="../shared/components/error-summary.html"></require>
+
     <section>
         <h2 class="ui center aligned icon header">
-            <i class="html5 icon"></i>
+            <i class="unmute icon"></i>
             <div class="content">
-                Plan de match
             </div>
         </h2>
         <div class="ui centered grid">
           <div class="eight wide column">
-            <div class="ui relaxed middle aligned list">
-                <div class="item">
-                    <i class="windows icon"></i>
-                    <div class="content">
-                        <div class="header">Backend Azure</div>
-                        <div class="description">Web API .NET Core</div>
-                        <div class="description">Database MongoDB sur service DocumentDB</div>
+                <div class="ui ignored info message" if.bind="token">Token successfully created!</div>
+                
+              <form class="ui form ${isWorking ? 'loading' : ''}" submit.delegate="send()" validation-errors.bind="errors">
+                  <error-summary errors.bind="errors"></error-summary>
+                  
+                  <div class="field">
+                    <div class="ui icon buttons">
+                        <div class="ui green button ${token ? '' : 'disabled'}" click.delegate="startRecording()"><i class="unmute icon"></i></div>
+                        <div class="ui red button ${token ? '' : 'disabled'}" click.delegate="stopRecording()"><i class="mute icon"></i></div>
                     </div>
-                </div>
-                <div class="item">
-                    <i class="building icon"></i>
-                    <div class="content">
-                        <div class="header">Bases</div>
-                        <div class="description">Survol des bases et de la structure</div>
+                    <audio controls autoplay></audio>
+                  </div>
+                    
+                    <div class="field">
+                        <label>Text</label>
+                        <textarea rows="2" value.one-way="text" readonly="" class="text ${color}"></textarea>
                     </div>
-                </div>
-                <div class="item">
-                    <i class="users icon"></i>
-                    <div class="content">
-                        <div class="header">Component</div>
-                        <div class="description">Création d'un component de liste</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="cloud icon"></i>
-                    <div class="content">
-                        <div class="header">Fetch</div>
-                        <div class="description">Récupération de data d'un API</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="block layout icon"></i>
-                    <div class="content">
-                        <div class="header">Form</div>
-                        <div class="description">Création d'un formulaire de modification</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="warning sign icon"></i>
-                    <div class="content">
-                        <div class="header">Validation</div>
-                        <div class="description">Validation du formulaire</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="ticket icon"></i>
-                    <div class="content">
-                        <div class="header">Animations</div>
-                        <div class="description">Animations de la liste</div>
-                    </div>
-                </div>
-            </div>
+
+                    <button type="submit" class="ui primary button ${token && audioBlob ? '' : 'disabled'}" click.delegate="send()">
+                        <i class="send icon"></i>
+                        Envoyer
+                    </button>
+              </form>
           </div>
         </div>
     </section>
